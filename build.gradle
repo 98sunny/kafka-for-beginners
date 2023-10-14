@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+
+allprojects {
+    group 'com.learnkafka'
+    version '1.0-SNAPSHOT'
+    repositories {
+        mavenCentral()
+    }
+}
+subprojects {
+    sourceCompatibility=11
+    apply plugin: 'java'
+    dependencies {
+        implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '3.4.0'
+        implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.7'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
